@@ -4,12 +4,17 @@ on:
     issues:
         types: [opened]
 
+permissions:
+  contents: read
+
 jobs:
     auto-assign:
-        runs-on: ubuntu-latest
+        permissions:
+          issues: write  # for pozil/auto-assign-issue to assign issues
+        runs-on: cx-public-ubuntu-x64
         steps:
             - name: 'Auto-assign issue'
-              uses: pozil/auto-assign-issue@v1.4.0
+              uses: pozil/auto-assign-issue@0eedad665e90cdf898706e75839a8b4a3bd21ec2 # v1.4.0
               with:
                   assignees: phantsure,tiwarishub,anuragc617,vsvipul,bishal-pdmsft
                   numOfAssignee: 1

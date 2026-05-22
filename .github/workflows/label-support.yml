@@ -3,14 +3,17 @@ on:
   issues:
     types: [labeled]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     permissions:
       issues: write
-    runs-on: ubuntu-latest
+    runs-on: cx-public-ubuntu-x64
     steps:
     - name: Close Issue
-      uses: peter-evans/close-issue@v1
+      uses: peter-evans/close-issue@a700eac5bf2a1c7a8cb6da0c13f93ed96fd53dbe # v1.0.3
       if: contains(github.event.issue.labels.*.name, 'support')
       with:
         comment: |
